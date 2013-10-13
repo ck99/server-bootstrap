@@ -1,0 +1,14 @@
+#! /bin/bash
+
+FQDN=$1
+UNQDN=$(echo $1 | cut -d. -f1)
+
+echo $UNQDN > /etc/hostname
+
+IP4=$(ifconfig eth0| grep "inet addr"|cut -d: -f2|cut -d\  -f1)
+IP6=$(ifconfig eth0| grep "inet6 addr"|grep Global|cut -d/ -f1|sed 's/^.*:\ //g')
+
+#sed --in-place=.backup.bootstrap "s/$IP6\(\ \)\+\(.*\)/$IP6\ $FQDN/g" /etc/hosts
+
+sed -e $BOOTSTRAP/support/hostname/sed/replacements /etc/hosts
+
