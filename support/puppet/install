@@ -1,0 +1,10 @@
+#! /bin/bash
+
+RELEASE=$(lsb_release -c|sed 's/.*:\t//g')
+
+cd /root
+wget "http://apt.puppetlabs.com/puppetlabs-release-$RELEASE.deb"
+dpkg -i "puppetlabs-release-$RELEASE.deb"
+apt-get update && apt-get install -y puppet
+apt-get install -y make ruby1.9.1 ruby1.9.1-dev
+gem install librarian-puppet

@@ -11,3 +11,5 @@ IP6=$(ifconfig eth0| grep "inet6 addr"|grep Global|cut -d/ -f1|sed 's/^.*:\ //g'
 sed --in-place=.backup.bootstrap "s/$IP6\(\ \)\+\(.*\)/$IP6\ $FQDN\ $UNQDN/g" /etc/hosts
 sed --in-place=.backup.bootstrap "s/$IP4\(\ \)\+\(.*\)/$IP4\ $FQDN\ $UNQDN/g" /etc/hosts
 sed --in-place=.backup.bootstrap "s/127\.0\.0\.1\(\ \)\+\(.*\)/127\.0\.0\.1\ $FQDN\ $UNQDN\ localhost/g" /etc/hosts
+
+hostname $1
