@@ -8,7 +8,11 @@ echo $UNQDN > /etc/hostname
 IP4=$(ifconfig eth0| grep "inet addr"|cut -d: -f2|cut -d\  -f1)
 IP6=$(ifconfig eth0| grep "inet6 addr"|grep Global|cut -d/ -f1|sed 's/^.*:\ //g')
 
-#sed --in-place=.backup.bootstrap "s/$IP6\(\ \)\+\(.*\)/$IP6\ $FQDN/g" /etc/hosts
+sed --in-place=.backup.bootstrap "s/$IP6\(\ \)\+\(.*\)/$IP6\ $FQDN\ $UNQDN/g" /root/.server-bootstrap/hosts
+sed --in-place=.backup.bootstrap "s/$IP4\(\ \)\+\(.*\)/$IP4\ $FQDN\ $UNQDN/g" /root/.server-bootstrap/hosts
+sed --in-place=.backup.bootstrap "s/127\.0\.0\.1\(\ \)\+\(.*\)/127\.0\.0\.1\ $FQDN\ $UNQDN\ localhost/g" /root/.server-bootstrap/hosts
 
-sed -e $BOOTSTRAP/support/hostname/sed/replacements /etc/hosts
+#sed -e $BOOTSTRAP/support/hostname/sed/replacements /etc/hosts
 
+echo $IP4
+echo $IP6
