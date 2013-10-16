@@ -1,0 +1,127 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    dprince/qpid (1.0.2)
+      puppetlabs/stdlib (>= 0.0.1)
+    duritong/sysctl (0.0.2)
+    puppetlabs/apache (0.9.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 2.4.0)
+    puppetlabs/apt (1.3.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/cinder (2.2.0-rc1)
+      dprince/qpid (< 2.0.0, >= 1.0.0)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/rabbitmq (< 3.0.0, >= 2.0.2)
+      puppetlabs/stdlib (>= 2.5.0)
+    puppetlabs/concat (1.0.0-rc1)
+    puppetlabs/glance (2.2.0-rc1)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/keystone (< 3.0.0, >= 2.2.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/stdlib (>= 2.5.0)
+    puppetlabs/horizon (2.2.0-rc1)
+      puppetlabs/apache (< 1.0.0, >= 0.4.0)
+      puppetlabs/stdlib (>= 2.5.0)
+      saz/memcached (< 3.0.0, >= 2.0.2)
+    puppetlabs/inifile (1.0.0)
+    puppetlabs/keystone (2.2.0-rc1)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/stdlib (>= 2.5.0)
+    puppetlabs/mysql (0.9.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/nova (2.2.0-rc1)
+      dprince/qpid (< 2.0.0, >= 1.0.0)
+      duritong/sysctl (< 1.0.0, >= 0.0.1)
+      puppetlabs/cinder (< 3.0.0, >= 2.2.0)
+      puppetlabs/glance (< 3.0.0, >= 2.2.0)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/keystone (< 3.0.0, >= 2.2.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/rabbitmq (< 3.0.0, >= 2.0.2)
+      puppetlabs/stdlib (>= 2.5.0)
+    puppetlabs/quantum (2.2.0-rc1)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/keystone (< 3.0.0, >= 2.0.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/nova (< 3.0.0, >= 2.0.0)
+      puppetlabs/stdlib (>= 2.3.0)
+      puppetlabs/vswitch (< 1.0.0, >= 0.0.1)
+    puppetlabs/rabbitmq (2.1.0)
+      puppetlabs/apt (>= 0.0.3)
+      puppetlabs/stdlib (>= 2.0.0)
+    puppetlabs/rsync (0.1.0)
+      puppetlabs/xinetd (>= 1.1.0)
+    puppetlabs/stdlib (4.1.0)
+    puppetlabs/swift (2.2.0-rc1)
+      puppetlabs/inifile (< 2.0.0, >= 1.0.0)
+      puppetlabs/keystone (< 3.0.0, >= 2.2.0)
+      puppetlabs/mysql (< 1.0.0, >= 0.6.1)
+      puppetlabs/rsync (< 1.0.0, >= 0.1.0)
+      puppetlabs/stdlib (>= 2.3.0)
+      puppetlabs/xinetd (< 2.0.0, >= 1.0.1)
+      ripienaar/concat (< 1.0.0, >= 0.1.0)
+      saz/memcached (< 3.0.0, >= 2.0.2)
+      saz/ssh (< 2.0.0, >= 1.0.2)
+    puppetlabs/vswitch (0.1.1)
+    puppetlabs/xinetd (1.2.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    ripienaar/concat (0.2.0)
+    saz/memcached (2.2.4)
+    saz/ssh (1.2.0)
+      puppetlabs/stdlib (>= 2.2.1)
+
+GIT
+  remote: git://github.com/stackforge/puppet-openstack
+  ref: master
+  sha: 97e4579cb8c1eb4aa8d2a01a37754f0f4d6ca607
+  specs:
+    puppetlabs/openstack (2.2.0)
+      puppetlabs/cinder (< 3.0.0, >= 2.2.0)
+      puppetlabs/glance (< 3.0.0, >= 2.2.0)
+      puppetlabs/horizon (< 3.0.0, >= 2.2.0)
+      puppetlabs/keystone (< 3.0.0, >= 2.2.0)
+      puppetlabs/nova (< 3.0.0, >= 2.2.0)
+      puppetlabs/quantum (< 3.0.0, >= 2.2.0)
+      puppetlabs/swift (< 3.0.0, >= 2.2.0)
+
+GIT
+  remote: https://github.com/elasticsearch/puppet-elasticsearch
+  ref: master
+  sha: 9a55cd8cff99d9dc0bc3b22f9529203fee576812
+  specs:
+    elasticsearch (0.1.3)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/logstash/puppet-logstash
+  ref: master
+  sha: d54a28a782ef55a84356740d2b828d119ba55276
+  specs:
+    logstash (0.3.3)
+      puppetlabs/stdlib (>= 3.0.0)
+
+GIT
+  remote: https://github.com/luxflux/puppet-openvpn
+  ref: master
+  sha: 28829eef92229e6d06017eaabe647630b98028c4
+  specs:
+    openvpn (2.1.0)
+      puppetlabs/concat (>= 1.0.0)
+
+GIT
+  remote: https://github.com/luxflux/puppet-sysctl
+  ref: master
+  sha: 6ad210b3f90f24878cfccd61c758275e2ab022bd
+  specs:
+    sysctl (0.0.1)
+
+DEPENDENCIES
+  elasticsearch (>= 0)
+  logstash (>= 0)
+  openvpn (>= 0)
+  puppetlabs/openstack (>= 0)
+  sysctl (>= 0)
+
