@@ -25,7 +25,27 @@ package {'curl':	ensure => installed}
             'set Xdebug/xdebug.remote_port 9000',
             'set Xdebug/xdebug.remote_handler dbgp',
             'set Xdebug/xdebug.remote_mode req',
+            'set Xdebug/xdebug.profiler_enable 0',
+            'set Xdebug/xdebug.profiler_output_dir /root/php_profiler',
+            'set Xdebug/xdebug.profiler_enable_trigger 1',
         ],
         require => Package['php5'],
     }
 
+
+$xdebug='export XDEBUG_CONFIG="idekey=phpstorm1"'
+$phpstorm='export PHP_IDE_CONFIG="serverName=cloud.bitrithm.co.uk"'
+file {'xdebug-environment-variables':
+	path => '/etc/profile.d/phpstorm-xdebug.sh',
+	content => "${xdebug}\n${phpstorm}"
+}
+
+file {'xdebug-profiler-alias':
+	path => '/etc/profile.d/xdebug-profiler-alias.sh',
+	content => 'alias phpp="php -d xdebug.profiler_enable=1"'
+}
+
+file {'/root/php_profiler' :
+	ensure => directory,
+	mode => 'a+rwx'
+}
