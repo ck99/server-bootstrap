@@ -8,7 +8,9 @@
     server       => '10.37.37.0 255.255.255.0'
   }
 
-sysctl::directive {
-  "net.ipv4.ip_forward":
-    value => 1;
-}
+
+
+#sysctl::directive {
+#  "net.ipv4.ip_forward":
+#    value => 1;
+#}
