@@ -8,7 +8,14 @@
     server       => '10.37.37.0 255.255.255.0'
   }
 
+openvpn::client { 'ciaran-laptop':
+    server => 'bitrithm'
+  }
 
+openvpn::client_specific_config { 'ciaran-laptop':
+    server => 'bitrithm',
+    ifconfig => '10.37.37.37 10.37.37.38'
+  }
 
 #sysctl::directive {
 #  "net.ipv4.ip_forward":
