@@ -12,6 +12,7 @@ gem install librarian-puppet
 
 ln -s /root/.server-bootstrap/support/puppet/library/Puppetfile /etc/puppet
 ln -s /root/.server-bootstrap/support/puppet/library/Puppetfile.lock /etc/puppet
+ln -s /root/.server-bootstrap/support/puppet/bitrithm /etc/puppet/modules/bitrithm
 
 cd /etc/puppet
 librarian-puppet install

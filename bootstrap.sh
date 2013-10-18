@@ -15,4 +15,14 @@ git remote set-url origin git@github.com:ck99/server-bootstrap.git
 
 BOOTSTRAP=$BOOTSTRAP $BOOTSTRAP/auth/add-public-keys.sh
 
-export PATH=~/.server-bootstrap/bin:$PATH
+# setup hostname
+. $BOOTSTRAP/hosts
+IP=$(ifconfig | grep -A 1 eth0|grep inet|awk -F: '{print $2}'|awk '{print $1}')
+HOSTNAME=${HOSTS["$IP"]}
+if [ $HOSTNAME ]
+ then
+    $BOOTSTRAP/bin/bootstrap-hostname $HOSTNAME
+
+    #install puppet
+    $BOOTSTRAP/bin/install-puppet
+fi
