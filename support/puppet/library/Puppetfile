@@ -1,7 +1,8 @@
 forge "http://forge.puppetlabs.com"
 
 #mod 'puppetlabs/openstack', :git => 'git://github.com/stackforge/puppet-openstack'
-mod 'logstash', :git => 'https://github.com/arnobroekhof/puppet-logstash-kibana'
+mod 'logstash', :git => 'https://github.com/Unyonsys/puppet-module-logstash'
+mod 'kibana', :git => 'https://github.com/camptocamp/puppet-kibana'
 mod 'elasticsearch', :git => 'https://github.com/elasticsearch/puppet-elasticsearch'
 mod 'openvpn', :git => 'https://github.com/luxflux/puppet-openvpn'
 mod 'sysctl', :git => 'https://github.com/luxflux/puppet-sysctl'
