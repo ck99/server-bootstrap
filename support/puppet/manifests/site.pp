@@ -1,5 +1,5 @@
 file { '/usr/local/bin/papply':
-  source => 'puppet://modules/bitrithm/papply.sh',
+  source => 'puppet:///modules/bitrithm/papply.sh',
   mode   => '0755',
 }
 
