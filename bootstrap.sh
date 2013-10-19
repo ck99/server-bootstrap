@@ -35,6 +35,8 @@ fi
 # config for vagrant VM testbeds
 if [ -f /etc/vagrant_box_build_time ]
 then
+  cd $BOOTSTRAP
+  git remote set-url origin https://github.com/${GITREPO}.git
   HOSTNAME=$(hostname)
   FQDN="${HOSTNAME}.vagrant.bitrithm.co.uk"
   UNQDN=$HOSTNAME

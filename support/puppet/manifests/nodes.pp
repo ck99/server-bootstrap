@@ -5,7 +5,7 @@ node logclient {
     log_local      => false,
     log_auth_local => false,
     custom_config  => undef,
-    server         => 'atlas',
+    server         => 'atlas.bitrithm.co.uk',
     port           => '5000',
   }
 }
