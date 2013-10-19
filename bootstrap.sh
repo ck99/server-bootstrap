@@ -31,3 +31,21 @@ if [ $HOSTNAME ]
     #install puppet
     $BOOTSTRAP/bin/install-puppet
 fi
+
+# config for vagrant VM testbeds
+if [ -f /etc/vagrant_box_build_time ]
+then
+  HOSTNAME=$(hostname)
+  FQDN="${HOSTNAME}.vagrant.bitrithm.co.uk"
+  UNQDN=$HOSTNAME
+
+  echo $UNQDN > /etc/hostname
+
+  echo "${IP}   ${FQDN}  ${UNQDN}" >> /etc/hosts
+  sed "s/^127\.0\.0\.1\(\ \)\+\(.*\)/127\.0\.0\.1\ $FQDN\ $UNQDN\ localhost/g" /etc/hosts
+
+  hostname $FQDN
+
+  #install puppet
+  $BOOTSTRAP/bin/install-puppet
+fi
