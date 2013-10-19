@@ -8,5 +8,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "raring64-vanilla"
   config.vm.box_url = "http://atlas.bitrithm.co.uk/vagrantboxes/raring64-vanilla.box"
   config.vm.network :private_network, ip: "10.0.0.2"
+  config.ssh.forward_agent = true
   config.vm.provision :shell, :inline => "wget -q -O - https://raw.github.com/ck99/server-bootstrap/master/bootstrap.sh | bash"
 end
