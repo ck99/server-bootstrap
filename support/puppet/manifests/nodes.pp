@@ -1,5 +1,9 @@
 node 'galt' {
   file {'/tmp/hello':
-    content => "Hello World!",
+    ensure => absent,
+  }
+
+  file {'/tmp/hellosdsd':
+    content => "hi, this is cool",
   }
 }
