@@ -12,6 +12,6 @@ cron {'run-puppet':
   ensure => 'present',
   user => 'root',
   command => '/usr/local/bin/pull-updates',
-  minute => '*/1',
+  minute => '*/10',
   hour => '*',
 }

@@ -1,2 +1,3 @@
 declare -A HOSTS
+HOSTS['144.76.118.101']='atlas.bitrithm.co.uk'
 HOSTS['78.47.196.29']='galt.bitrithm.co.uk'
