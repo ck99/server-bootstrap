@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# become root
+sudo su
+
 BOOTSTRAP=/root/.server-bootstrap
 GITREPO="ck99/server-bootstrap"
 
