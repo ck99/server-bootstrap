@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-BOOTSTRAP=~/.server-bootstrap
+BOOTSTRAP=/root/.server-bootstrap
 
 apt-get update && apt-get install -y git
 
