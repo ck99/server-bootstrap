@@ -1,0 +1,40 @@
+#! /bin/bash
+
+RELEASE=$(lsb_release -c|sed 's/.*:\t//g')
+
+echo "deb http://download.virtualbox.org/virtualbox/debian $RELEASE contrib" >> /etc/apt/sources.list
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+apt-get update
+apt-get install -y linux-headers-$(uname -r) dkms virtualbox ruby ruby-dev
+service virtualbox start
+
+
+# get latest vagrant version
+git clone git@github.com:mitchellh/vagrant.git /root/vagrant-repo
+cd /root/vagrant-repo
+TAG=$(git describe --abbrev=0 --tags)
+DLTAG=$(echo $TAG | cut -c2-)
+HASH=$(git rev-list $TAG | head -n 1)
+wget "http://files.vagrantup.com/packages/${HASH}/vagrant_${DLTAG}_x86_64.deb"
+dpkg -i vagrant_${DLTAG}_x86_64.deb
+rm -rf /root/vagrant-repo
+
+#setup veewee
+gem install bundler
+apt-get install -y zlib1g-dev libxml2-dev libxslt1-dev
+
+VEEWEEROOT=/root/vagrant-vanilla-boxes
+git clone git@github.com:teohm/vanilla-boxes.git $VEEWEEROOT
+cd $VEEWEEROOT
+bundle install --path gems/
+
+
+## build a box (can take some time, about 10 mins on an 8 core server with 32GB ram...)
+bundle exec veewee vbox build 'raring64-vanilla' --nogui
+
+#run tests: expect to see fails for ruby, gem, chef, puppet
+bundle exec veewee vbox validate 'raring64-vanilla'
+
+vagrant package --base 'raring64-vanilla' --output 'boxes/raring64-vanilla.box'
+
+vagrant box add raring64 boxes/raring64-vanilla.box --force
