@@ -1,17 +1,18 @@
 #! /usr/bin/env bash
 
 BOOTSTRAP=/root/.server-bootstrap
+GITREPO="ck99/server-bootstrap"
 
-apt-get update && apt-get install -y git
+apt-get update && apt-get upgrade -y && apt-get install -y git
 
 git config --global user.name "Ciaran Kelly"
 git config --global user.email ciaran.kelly@gmail.com
 git config --global push.default simple
 
-git clone git://github.com/ck99/server-bootstrap $BOOTSTRAP
+git clone git://github.com/$GITREPO $BOOTSTRAP
 
 cd $BOOTSTRAP
-git remote set-url origin git@github.com:ck99/server-bootstrap.git
+git remote set-url origin git@github.com:$GITREPO.git
 
 BOOTSTRAP=$BOOTSTRAP $BOOTSTRAP/auth/add-public-keys.sh
 

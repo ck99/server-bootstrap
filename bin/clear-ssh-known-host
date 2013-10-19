@@ -1,0 +1,9 @@
+#! /bin/bash
+
+HOSTNAME=$1
+IP_ADDRESS=$(dig +short $HOSTNAME)
+
+ssh-keygen -f ~/.ssh/known_hosts -R $IP_ADDRESS
+ssh-keygen -f ~/.ssh/known_hosts -R $HOSTNAME
+
+ssh root@$HOSTNAME -oStrictHostKeyChecking=no -oCheckHostIP=no
