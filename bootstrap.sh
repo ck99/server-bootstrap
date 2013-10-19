@@ -2,6 +2,7 @@
 
 # become root
 sudo su
+mkdir -p /root/.ssh
 
 BOOTSTRAP=/root/.server-bootstrap
 GITREPO="ck99/server-bootstrap"
