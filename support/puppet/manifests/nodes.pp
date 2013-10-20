@@ -15,6 +15,7 @@ node 'galt' inherits logclient {
 }
 
 node 'atlas' {
+  class { 'elasticsearch': }
   class { 'kibana':
     webserver   => 'apache',
     virtualhost => 'logs.bitrithm.co.uk', # Default: kibana.${::domain}
