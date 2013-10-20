@@ -15,8 +15,10 @@ node 'galt' inherits logclient {
 }
 
 node 'atlas' {
-  class { "logstash": }
-  class { "kibana": }
+  class { 'kibana':
+    webserver   => 'apache',
+    virtualhost => 'logs.bitrithm.co.uk', # Default: kibana.${::domain}
+  }
 
   openvpn::server { 'bitrithm':
     country      => 'GB',
