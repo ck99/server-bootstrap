@@ -44,7 +44,7 @@ then
   echo $UNQDN > /etc/hostname
 
   echo "${IP}   ${FQDN}  ${UNQDN}" >> /etc/hosts
-  sed "s/^127\.0\.0\.1\(\ \)\+\(.*\)/127\.0\.0\.1\ $FQDN\ $UNQDN\ localhost/g" /etc/hosts
+  sed --in-place=.backup.bootstrap "s/^127\.0\.0\.1\(\ \)\+\(.*\)/127\.0\.0\.1\ $FQDN\ $UNQDN\ localhost/g" /etc/hosts
 
   hostname $FQDN
 
