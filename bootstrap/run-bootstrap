@@ -1,0 +1,7 @@
+#! /bin/bash
+
+username=$1
+server=$2
+
+ssh $username@$server "wget -q -O - https://raw.github.com/ck99/server-bootstrap/master/bootstrap.sh | bash"
+

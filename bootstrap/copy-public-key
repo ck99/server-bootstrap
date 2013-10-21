@@ -1,0 +1,40 @@
+#!/usr/bin/expect -f
+
+# Now we set variables in expect, note:  [lrange $argv 0 0 =$1 the first parameter, and so on.
+
+set username [lrange $argv 0 0]
+set password [lrange $argv 1 1]
+set server [lrange $argv 2 2]
+set keyfile [lrange $argv 3 3]
+
+#The value of timeout must be an integral number of seconds. Normally timeouts are nonnegative, but the special case of -1 signifies that expect #should wait forever.
+set timeout 60
+
+# Now we can connect to the remote server/port with our username and password, the command spawn is used to execute another process:
+#set PID [spawn ssh -oStrictHostKeyChecking=no -oCheckHostIP=no $username@$server]
+#match_max 100000
+#exec echo $PID
+#exec kill -2 $PID
+
+spawn ssh-copy-id -i $keyfile $username@$server
+match_max 100000
+# Now we expect to have a request for password:
+expect "*?continue connecting*"
+send -- "yes\r"
+
+
+expect "*?assword:*"
+
+# And we send our password:
+send -- "$password\r"
+
+# send blank line (\r) to make sure we get back to cli
+send -- "\r"
+
+#We have gave our "program" and now we expect that the remote server close the connection:
+expect eof
+
+
+
+spawn ssh-copy-id -i /home/ciaran/.ssh/ciarankelly.pub root@galt.bitrithm.co.uk
+send -- "yes\r"

@@ -1,13 +1,5 @@
 node logclient {
-  class { 'rsyslog::client':
-    log_remote     => true,
-    remote_type    => 'tcp',
-    log_local      => false,
-    log_auth_local => false,
-    custom_config  => undef,
-    server         => 'atlas.bitrithm.co.uk',
-    port           => '5000',
-  }
+  class {'logstash': }
 }
 
 node 'galt' inherits logclient {
@@ -16,6 +8,7 @@ node 'galt' inherits logclient {
 
 node 'atlas' {
   class { 'elasticsearch': }
+  class {'logstash': }
   class { 'kibana':
     webserver   => 'apache',
     virtualhost => 'logs.bitrithm.co.uk', # Default: kibana.${::domain}
