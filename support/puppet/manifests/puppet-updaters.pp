@@ -1,4 +1,3 @@
-$message = hiera('magic_word')
 notify{$message: }
 
 file { '/usr/local/bin/papply':

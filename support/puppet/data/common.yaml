@@ -1,1 +1,12 @@
-magic_word: 'ciarankelly'
+---
+bootstrap_symlinks:
+  /etc/puppet/Puppetfile:
+    target: $ck99_bootstrap/support/puppet/library/Puppetfile
+  /etc/puppet/Puppetfile.lock:
+    target: $ck99_bootstrap/support/puppet/library/Puppetfile.lock
+  /etc/puppet/manifests:
+    target: $ck99_bootstrap/support/puppet/manifests
+  /etc/puppet/hiera.yaml:
+    target: $ck99_bootstrap/support/puppet/hiera.yaml
+  /etc/puppet/data:
+    target: $ck99_bootstrap/support/puppet/data
