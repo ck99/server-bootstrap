@@ -5,6 +5,10 @@ sudo su
 mkdir -p /root/.ssh
 
 BOOTSTRAP=/root/.server-bootstrap
+
+mkdir -p /etc/facter/facts.d
+echo "ck99_bootstrap=$BOOTSTRAP" > /etc/facter/facts.d/ck99_bootstrap.txt
+
 GITREPO="ck99/server-bootstrap"
 
 apt-get update && apt-get upgrade -y && apt-get install -y git

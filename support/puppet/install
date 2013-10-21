@@ -10,12 +10,8 @@ apt-get update && apt-get install -y puppet
 apt-get install -y make ruby1.9.1 ruby1.9.1-dev
 gem install librarian-puppet
 
-ln -s /root/.server-bootstrap/support/puppet/library/Puppetfile /etc/puppet
-ln -s /root/.server-bootstrap/support/puppet/library/Puppetfile.lock /etc/puppet
-rm -rf /etc/puppet/manifests && ln -s /root/.server-bootstrap/support/puppet/manifests /etc/puppet
-
-ln -s /root/.server-bootstrap/support/puppet/hiera.yaml /etc/puppet
-ln -s /root/.server-bootstrap/support/puppet/data /etc/puppet
+BOOTSTRAP=$(facter ck99_bootstrap)/support/puppet
+puppet apply $BOOTSTRAP/manifests/bootstrap-puppet.pp --hiera_config $BOOTSTRAP/hiera.yaml
 
 cd /etc/puppet
 librarian-puppet install
