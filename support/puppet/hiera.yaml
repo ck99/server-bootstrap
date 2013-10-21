@@ -4,4 +4,4 @@
   - yaml
 :yaml:
   :datadir:
-    /etc/puppet/data
+    "%{ck99_bootstrap}/support/puppet/data"
