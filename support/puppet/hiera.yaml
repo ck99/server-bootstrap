@@ -4,4 +4,4 @@
   - yaml
 :yaml:
   :datadir:
-    '/etc/puppet/data'
+    /etc/puppet/data
