@@ -1,5 +1,4 @@
 node logclient {
-  class {'logstash': }
 }
 
 node 'galt' inherits logclient {
