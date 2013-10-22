@@ -15,3 +15,4 @@ puppet apply $BOOTSTRAP/manifests/bootstrap-puppet.pp --hiera_config $BOOTSTRAP/
 
 cd /etc/puppet
 librarian-puppet install
+puppet apply manifests/site.pp
