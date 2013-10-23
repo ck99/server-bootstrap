@@ -7,6 +7,21 @@ node 'galt' inherits logclient {
 
 node 'atlas' {
 
+  class { "nginx":  }
+
+  nginx::resource::location {"www.findamanual.net":
+    ensure             => present,
+    vhost              => 'www.findamanual.net',
+    proxy              => 'vagrant-findamanual',
+  }
+
+  nginx::resource::upstream { 'proxypass':
+    ensure  => present,
+    members => [
+      '10.0.0.2:80',
+    ],
+  }
+
   openvpn::server { 'bitrithm':
     country      => 'GB',
     province     => 'SU',
