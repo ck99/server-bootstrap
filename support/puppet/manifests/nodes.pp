@@ -39,3 +39,26 @@ node 'atlas' {
     ifconfig => '10.37.37.37 10.37.37.38'
   }
 }
+
+node /findamanual.vagrant/ inherits logclient {
+
+  apache::vhost { 'default':
+    docroot             => '/var/www',
+    server_name         => false,
+    priority            => '',
+    template            => 'apache/virtualhost/vhost.conf.erb',
+  }
+
+  class {'php': }
+  class {'mysql':
+    root_password => 'auto',
+  }
+
+  mysql::grant { 'findamanual':
+    mysql_privileges => 'ALL',
+    mysql_password => 'password',
+    mysql_db => 'findamanual',
+    mysql_user => 'findamanual',
+    mysql_host => 'localhost',
+  }
+}
