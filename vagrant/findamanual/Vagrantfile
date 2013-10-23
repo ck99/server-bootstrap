@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.hostname = "findamanual"
+  config.vm.hostname = "findamanual.yaml"
   config.vm.box = "raring64-vanilla"
   config.vm.box_url = "http://atlas.bitrithm.co.uk/vagrantboxes/raring64-vanilla.box"
   config.vm.network :private_network, ip: "10.0.0.4"

@@ -10,3 +10,6 @@ bootstrap_symlinks:
     target: "%{ck99_bootstrap}/support/puppet/hiera.yaml"
   /etc/puppet/data:
     target: "%{ck99_bootstrap}/support/puppet/data"
+
+----
+::apache_log_dir: "/var/log/apache"
