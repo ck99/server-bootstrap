@@ -11,7 +11,7 @@ node 'atlas' {
 
   nginx::resource::vhost {"www.findamanual.net":
     ensure             => present,
-    proxy              => 'vagrant-findamanual',
+    proxy              => 'http://vagrant-findamanual',
   }
 
   nginx::resource::upstream { 'vagrant-findamanual':
