@@ -6,7 +6,7 @@ node 'galt' inherits logclient {
 }
 
 node 'atlas' {
-  class { 'elasticsearch': ensure=>absent}
+  class { 'elasticsearch': }
   class {'logstash': ensure=>absent}
   class { 'kibana':  ensure=>absent}
 
