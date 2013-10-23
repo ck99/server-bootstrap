@@ -17,7 +17,7 @@ node 'atlas' {
   nginx::resource::upstream { 'vagrant-findamanual':
     ensure  => present,
     members => [
-      '10.0.0.4:80',
+      '10.0.0.2:80',
     ],
   }
 
