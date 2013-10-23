@@ -9,13 +9,13 @@ node 'atlas' {
 
   class { "nginx":  }
 
-  nginx::resource::location {"www.findamanual.net":
+  nginx::resource::vhost {"www.findamanual.net":
     ensure             => present,
     vhost              => 'www.findamanual.net',
     proxy              => 'vagrant-findamanual',
   }
 
-  nginx::resource::upstream { 'proxypass':
+  nginx::resource::upstream { 'vagrant-findamanual':
     ensure  => present,
     members => [
       '10.0.0.2:80',
