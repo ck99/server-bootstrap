@@ -6,9 +6,6 @@ node 'galt' inherits logclient {
 }
 
 node 'atlas' {
-  class { 'elasticsearch': absent => true}
-  class {'logstash': absent => true}
-  class { 'kibana':  ensure=>absent}
 
   openvpn::server { 'bitrithm':
     country      => 'GB',
