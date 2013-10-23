@@ -11,7 +11,6 @@ node 'atlas' {
 
   nginx::resource::vhost {"www.findamanual.net":
     ensure             => present,
-    vhost              => 'www.findamanual.net',
     proxy              => 'vagrant-findamanual',
   }
 
