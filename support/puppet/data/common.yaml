@@ -11,4 +11,4 @@ bootstrap_symlinks:
   /etc/puppet/data:
     target: "%{ck99_bootstrap}/support/puppet/data"
 
-apache_log_dir: "/var/log/apache"
+apache_log_dir: "/var/log/apache2"
