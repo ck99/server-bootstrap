@@ -1,10 +1,10 @@
 node 'galt' {
-  class {'mysql':
-    root_password => 'auto',
+class { "nginx":  }
+class {'mysql':
+  root_password => 'auto',
   }
 
-  class { "redis": }
-  class { "nginx":  }
+class { "redis": }
 
   mysql::grant { 'gitlab':
     mysql_privileges => 'ALL',
@@ -30,6 +30,32 @@ node 'galt' {
 node 'atlas' {
 
   class { "nginx":  }
+
+  class {'mysql':
+    root_password => 'auto',
+  }
+
+  class { "redis": }
+
+  mysql::grant { 'gitlab':
+    mysql_privileges => 'ALL',
+    mysql_password => 'gitlab',
+    mysql_db => 'gitlab',
+    mysql_user => 'gitlab',
+    mysql_host => 'localhost',
+  }
+
+  class {
+    'gitlab':
+    git_email         => 'ciaran.kelly@gmail.com',
+    git_comment       => 'GitLab',
+    gitlab_domain     => 'git.bitrithm.co.uk',
+    gitlab_dbtype     => 'mysql',
+    gitlab_dbname     => 'gitlab',
+    gitlab_dbuser     => 'gitlab',
+    gitlab_dbpwd      => 'gitlab',
+    ldap_enabled      => false,
+  }
 
   nginx::resource::vhost {"www.mpce.eu":
     ensure             => present,
