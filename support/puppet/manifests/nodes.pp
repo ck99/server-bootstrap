@@ -3,6 +3,9 @@ node 'galt' {
     root_password => 'auto',
   }
 
+  class { "redis": }
+  class { "nginx":  }
+
   mysql::grant { 'gitlab':
     mysql_privileges => 'ALL',
     mysql_password => 'gitlab',
