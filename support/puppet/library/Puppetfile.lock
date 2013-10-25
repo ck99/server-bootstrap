@@ -72,6 +72,17 @@ GIT
       example42/yum (>= 2.0.0)
 
 GIT
+  remote: https://github.com/example42/puppet-nginx
+  ref: master
+  sha: 5f2010ebec7187790a6f15d27968e6c991eee97d
+  specs:
+    example42/nginx (2.0.12)
+      example42/firewall (>= 2.0.0)
+      example42/monitor (>= 2.0.0)
+      example42/puppi (>= 2.0.0)
+      puppetlabs/concat (>= 1.0.0)
+
+GIT
   remote: https://github.com/example42/puppi
   ref: master
   sha: 9307cfcd91601e149032ec32d708f12fcd2626a1
@@ -100,6 +111,7 @@ DEPENDENCIES
   example42/git (>= 0)
   example42/kibana (>= 0)
   example42/logstash (>= 0)
+  example42/nginx (>= 0)
   openvpn (>= 0)
   puppi (>= 0)
   rsyslog (>= 0)
