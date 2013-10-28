@@ -29,6 +29,8 @@ class { "redis": }
 
 node 'atlas' {
 
+  package {'g++' : ensure => installed}
+
   class { "nginx":  }
 
   class {'mysql':
@@ -55,6 +57,7 @@ node 'atlas' {
     gitlab_dbuser     => 'gitlab',
     gitlab_dbpwd      => 'gitlab',
     ldap_enabled      => false,
+    notify            => Service['nginx'],
   }
 
   nginx::resource::vhost {"www.mpce.eu":
