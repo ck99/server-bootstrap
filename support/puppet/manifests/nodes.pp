@@ -57,8 +57,9 @@ node 'atlas' {
     gitlab_dbuser     => 'gitlab',
     gitlab_dbpwd      => 'gitlab',
     ldap_enabled      => false,
-    notify            => Service['nginx'],
   }
+
+  Class['gitlab'] ~> Service['nginx']
 
   nginx::resource::vhost {"www.mpce.eu":
     ensure             => present,
