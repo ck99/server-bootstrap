@@ -29,6 +29,8 @@ class { "redis": }
 
 node 'atlas' {
 
+  package {'g++' : ensure => installed}
+
   class { "nginx":  }
 
   class {'mysql':
