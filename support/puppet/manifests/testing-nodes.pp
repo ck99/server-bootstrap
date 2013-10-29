@@ -1,2 +1,0 @@
-node /^.*\.vagrant/ inherits logclient {
-}

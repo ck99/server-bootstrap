@@ -102,7 +102,7 @@ node 'atlas' {
   }
 }
 
-node /findamanual.vagrant/ inherits logclient {
+node /findamanual.vagrant/ {
   include apache
 
   apache::vhost { 'default':
