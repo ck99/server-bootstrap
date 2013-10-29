@@ -21,6 +21,8 @@ git clone git://github.com/$GITREPO $BOOTSTRAP
 
 cd $BOOTSTRAP
 git remote set-url origin git@github.com:$GITREPO.git
+git submodule init
+git submodule update
 
 BOOTSTRAP=$BOOTSTRAP $BOOTSTRAP/auth/add-public-keys.sh
 

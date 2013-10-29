@@ -14,5 +14,5 @@ BOOTSTRAP=$(facter ck99_bootstrap)/support/puppet
 puppet apply $BOOTSTRAP/manifests/bootstrap-puppet.pp --hiera_config $BOOTSTRAP/hiera.yaml
 
 cd /etc/puppet
-librarian-puppet install --verbose
+#librarian-puppet install --verbose
 puppet apply manifests/site.pp
