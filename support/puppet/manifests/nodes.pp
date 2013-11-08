@@ -48,7 +48,7 @@ node 'atlas' {
 
   service { ssh:
     ensure => running,
-    subscribe => '/etc/ssh/sshd_config',
+    subscribe => File['/etc/ssh/sshd_config'],
   }
 
   sshd_config { "AllowAgentForwarding":
