@@ -46,6 +46,10 @@ node 'atlas' {
     shell    => '/bin/false',
   }
 
+  file { '/etc/ssh/sshd_config':
+    ensure => present
+  }
+
   service { ssh:
     ensure => running,
     subscribe => File['/etc/ssh/sshd_config'],
