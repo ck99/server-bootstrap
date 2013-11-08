@@ -35,8 +35,8 @@ node 'atlas' {
 
   file {'/var/shared_data/des':
     ensure=>directory,
-    owner => 'root',
-    group => 'root',
+    owner => 'des',
+    group => 'sftpusers',
   }
 
 
