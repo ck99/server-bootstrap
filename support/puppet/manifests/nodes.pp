@@ -46,6 +46,11 @@ node 'atlas' {
     shell    => '/bin/false',
   }
 
+  service { ssh:
+    ensure => running,
+    subscribe => '/etc/ssh/sshd_config',
+  }
+
   sshd_config { "AllowAgentForwarding":
     ensure    => present,
     value     => "yes",
@@ -72,7 +77,7 @@ node 'atlas' {
     ensure    => present,
     condition => "Group sftpusers",
     value     => "no",
-  } -> Notify['ssh']
+  }
 
   package {'g++' : ensure => installed}
 
