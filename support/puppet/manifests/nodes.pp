@@ -34,7 +34,15 @@ node 'atlas' {
   }
 
   file {'/var/shared_data/des':
-    ensure=>directory
+    ensure=>directory,
+    owner => 'root',
+    group => 'root',
+  }
+
+
+  file {'/var/shared_data/des/public_html':
+    ensure=>directory,
+    owner => 'des',
   }
 
   group { "sftpusers":
@@ -46,7 +54,7 @@ node 'atlas' {
     password => '$6$febeegie$rVyEvM8keOBZdHSADibxxLSl40326PiFveVntR5PKFNWaHKKaQucos1mjyzL1vLcz4JrI5TlbdI5K0foQjCUW0',
     groups   => ['sftpusers'],
     home     => '/var/shared_data/des',
-    shell    => '/sbin/nologin',
+    shell    => '/bin/false',
   }
 
   sshd_config_subsystem { "sftp":
@@ -57,13 +65,19 @@ node 'atlas' {
   sshd_config { "ChrootDirectory":
     ensure    => present,
     condition => "Group sftpusers",
-    value     => "/var/shared_data/%u",
+    value     => "%h",
   }
 
   sshd_config { "ForceCommand":
     ensure    => present,
     condition => "Group sftpusers",
     value     => "internal-sftp",
+  }
+
+  sshd_config { "AllowTCPForwarding":
+    ensure    => present,
+    condition => "Group sftpusers",
+    value     => "no",
   }
 
   package {'g++' : ensure => installed}
