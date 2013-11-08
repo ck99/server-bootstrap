@@ -30,7 +30,9 @@ class { "redis": }
 node 'atlas' {
 
   file {'/var/shared_data':
-    ensure=>directory
+    ensure=>directory,
+    owner => 'root',
+    group => 'root',
   }
 
   file {'/var/shared_data/des':
@@ -65,7 +67,7 @@ node 'atlas' {
   sshd_config { "ChrootDirectory":
     ensure    => present,
     condition => "Group sftpusers",
-    value     => "%h",
+    value     => "/var/shared_data",
   }
 
   sshd_config { "ForceCommand":
