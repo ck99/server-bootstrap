@@ -29,6 +29,10 @@ class { "redis": }
 
 node 'atlas' {
 
+  file {'/var/shared_data':
+    ensure=>directory
+  }
+
   package {'g++' : ensure => installed}
 
   class { "nginx":  }
