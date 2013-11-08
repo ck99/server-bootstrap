@@ -1,0 +1,3 @@
+[submodule "server-bootstrap-puppet-library"]
+	path = support/puppet/library
+	url = https://github.com/ck99/server-bootstrap-puppet-library
