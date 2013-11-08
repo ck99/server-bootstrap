@@ -33,6 +33,39 @@ node 'atlas' {
     ensure=>directory
   }
 
+  file {'/var/shared_data/des':
+    ensure=>directory
+  }
+
+  group { "sftpusers":
+    ensure => "present",
+  }
+
+  user { 'des':
+    ensure   => 'present',
+    password => '$6$febeegie$rVyEvM8keOBZdHSADibxxLSl40326PiFveVntR5PKFNWaHKKaQucos1mjyzL1vLcz4JrI5TlbdI5K0foQjCUW0',
+    groups   => ['sftpusers'],
+    home     => '/var/shared_data/des',
+    shell    => '/sbin/nologin',
+  }
+
+  sshd_config_subsystem { "sftp":
+    ensure  => present,
+    command => "internal-sftp",
+  }
+
+  sshd_config { "ChrootDirectory":
+    ensure    => present,
+    condition => "Group sftpusers",
+    value     => "/var/shared_data/%u",
+  }
+
+  sshd_config { "ForceCommand":
+    ensure    => present,
+    condition => "Group sftpusers",
+    value     => "internal-sftp",
+  }
+
   package {'g++' : ensure => installed}
 
   class { "nginx":  }
@@ -129,4 +162,5 @@ node /findamanual.vagrant/ {
     mysql_user => 'findamanual',
     mysql_host => 'localhost',
   }
+
 }
