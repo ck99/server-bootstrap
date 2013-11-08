@@ -1,0 +1,3 @@
+[submodule "UpdatedPuppetLibrary"]
+	path = support/puppet/library
+	url = https://github.com/ck99/puppet-librarian
