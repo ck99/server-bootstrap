@@ -35,18 +35,6 @@ node 'atlas' {
     group => 'root',
   }
 
-  file {'/var/shared_data/des':
-    ensure=>directory,
-    owner => 'des',
-    group => 'root',
-  }
-
-
-  file {'/var/shared_data/des/public_html':
-    ensure=>directory,
-    owner => 'des',
-  }
-
   group { "sftpusers":
     ensure => "present",
   }
@@ -55,7 +43,6 @@ node 'atlas' {
     ensure   => 'present',
     password => '$6$febeegie$rVyEvM8keOBZdHSADibxxLSl40326PiFveVntR5PKFNWaHKKaQucos1mjyzL1vLcz4JrI5TlbdI5K0foQjCUW0',
     groups   => ['sftpusers'],
-    home     => '/var/shared_data/des',
     shell    => '/bin/false',
   }
 
@@ -85,7 +72,7 @@ node 'atlas' {
     ensure    => present,
     condition => "Group sftpusers",
     value     => "no",
-  }
+  } -> Notify['ssh']
 
   package {'g++' : ensure => installed}
 
