@@ -113,6 +113,7 @@ node /findamanual.vagrant/ {
   }
 
   class {'php': }
+  php::module { 'pdo': }
   class {'mysql':
     root_password => 'auto',
   }
