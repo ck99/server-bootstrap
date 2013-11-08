@@ -59,6 +59,11 @@ node 'atlas' {
     shell    => '/bin/false',
   }
 
+  sshd_config { "AllowAgentForwarding":
+    ensure    => present,
+    value     => "yes",
+  }
+
   sshd_config_subsystem { "sftp":
     ensure  => present,
     command => "internal-sftp",
