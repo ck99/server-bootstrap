@@ -37,8 +37,8 @@ node 'atlas' {
 
   file {'/var/shared_data/des':
     ensure=>directory,
-    owner => 'des',
-    group => 'sftpusers',
+    owner => 'root',
+    group => 'root',
   }
 
 
@@ -67,7 +67,7 @@ node 'atlas' {
   sshd_config { "ChrootDirectory":
     ensure    => present,
     condition => "Group sftpusers",
-    value     => "/var/shared_data",
+    value     => "/var/shared_data/%u",
   }
 
   sshd_config { "ForceCommand":
