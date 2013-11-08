@@ -1,0 +1,4 @@
+#! /bin/bash
+wget https://github.com/yiisoft/yii/releases/download/1.1.14/yii-1.1.14.f0fee9.tar.gz
+tar xvzf yii-1.1.14.f0fee9.tar.gz
+ln -s yii-1.1.14.f0fee9 yii
